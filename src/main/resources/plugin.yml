@@ -1,0 +1,4 @@
+name: QuantumDungeons
+version: '${project.version}'
+main: me.xemor.quantumdungeons.QuantumDungeons
+api-version: 1.19
