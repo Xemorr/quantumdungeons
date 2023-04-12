@@ -1,6 +1,6 @@
 group = "me.xemor"
-version = "3.9.1"
-description = "superheroes"
+version = "1.0-ALPHA"
+description = "quantumdungeons"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 plugins {
@@ -12,27 +12,24 @@ plugins {
 
 repositories {
     mavenLocal()
+    mavenCentral()
     maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
     maven { url = uri("https://oss.sonatype.org/content/groups/public/") }
     maven { url = uri("https://repo.codemc.org/repository/maven-public") }
     maven { url = uri("https://github.com/deanveloper/SkullCreator/raw/mvn-repo/") }
     maven { url = uri("https://repo.minebench.de/") }
     maven { url = uri("https://repo.maven.apache.org/maven2/") }
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/")}
 }
 
 dependencies {
-    shadow("de.themoep:minedown-adventure:1.7.1-SNAPSHOT")
     shadow("me.xemor:configurationdata:1.19.2-SNAPSHOT")
-    shadow("org.bstats:bstats-bukkit:1.7")
-    shadow("dev.dbassett:skullcreator:3.0.1")
     shadow("org.jetbrains:annotations:20.1.0")
     shadow("net.kyori:adventure-platform-bukkit:4.1.0")
-    shadow("mysql:mysql-connector-java:8.0.29")
-    shadow("com.zaxxer:HikariCP:4.0.3")
     shadow("net.kyori:adventure-api:4.10.1")
-    shadow("org.apache.commons:commons-lang3:3.12.0")
+    shadow("io.papermc:paperlib:1.0.7")
     compileOnly("org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT")
-    compileOnly("me.xemor:skillslibrary2:2.9.0")
+    compileOnly("me.xemor:enchantedcombat:1.0")
 }
 
 java {

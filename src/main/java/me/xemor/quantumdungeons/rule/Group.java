@@ -5,30 +5,54 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class Rule {
+public class Group {
 
     private final String name;
     private final List<Structure> structures;
-    private WeightList weights = new WeightList(List.of());
+    private final RuleList weights = new RuleList();
 
-    public Rule(@NotNull String name, @NotNull List<Structure> structures) {
+    public Group(@NotNull String name, @NotNull List<Structure> structures) {
         this.name = name;
         this.structures = structures;
     }
 
-    public record Weight(int weight, int side, Rule rule) {
+    public static final class Rule {
+
+        private final double weight;
+        private final int side;
+        private final Group group;
+
+        public Rule(double weight, int side, Group group) {
+            this.weight = weight;
+            this.side = side;
+            this.group = group;
+        }
+
         @Override
         public boolean equals(Object other) {
-            if (other instanceof Weight otherWeight) {
-                return otherWeight.rule().equals(this.rule());
+            if (other instanceof Rule otherRule) {
+                return otherRule.getGroup().equals(this.getGroup()) && this.weight == otherRule.getWeight() && this.side == otherRule.getSide();
             }
             return false;
         }
 
         @Override
         public int hashCode() {
-            return rule.hashCode();
+            return group.hashCode() ^ Double.hashCode(this.weight) ^ Integer.hashCode(this.side);
         }
+
+        public double getWeight() {
+            return weight;
+        }
+
+        public int getSide() {
+            return side;
+        }
+
+        public Group getGroup() {
+            return group;
+        }
+
     }
 
     @NotNull
@@ -41,18 +65,14 @@ public class Rule {
         return structures;
     }
 
-    public WeightList getWeights() {
+    public RuleList getRules() {
         return weights;
-    }
-
-    public void setWeights(List<Weight> weights) {
-        this.weights = new WeightList(weights);
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other instanceof Rule otherRule) {
-            return otherRule.name.equals(this.name);
+        if (other instanceof Group otherGroup) {
+            return otherGroup.name.equals(this.name);
         }
         return false;
     }

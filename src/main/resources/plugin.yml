@@ -1,4 +1,10 @@
 name: QuantumDungeons
-version: '${project.version}'
+version: '${version}'
 main: me.xemor.quantumdungeons.QuantumDungeons
 api-version: 1.19
+commands:
+  start:
+    description: /start
+    permission: quantumdungeons.start
+softdepend:
+  - EnchantedCombat

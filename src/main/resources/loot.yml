@@ -1,0 +1,17 @@
+red_shulker:
+  colouredName: <red>God's Box
+  from: YELLOW_SHULKER_BOX
+  to: YELLOW_SHULKER_BOX
+  numberOfItems: 10
+  items:
+    dirt:
+      type: DIRT
+      weight: 1
+      amount: 10
+    gem:
+      type: caelius_gem
+      weight: 1
+      amount: 3
+
+
+

@@ -1,0 +1,53 @@
+chunk_diameter: 32
+blanks:
+  - deepslate_blank
+groups:
+  staircase_north:
+    - deepslate_staircase_north
+  staircase_north_end:
+    - deepslate_staircase_chest
+  four_corridor:
+    - deepslate_corridor_lava
+    - deepslate_four_corridor
+    - deepslate_four_corridor_2
+    - deepslate_four_corridor_pillar
+    - deepslate_four_corridor_chest
+    - deepslate_four_corridor_dchest
+    - deepslate_corridor_nsew_chest
+  four_corridor_roof_hole:
+    - deepslate_corridor_nsewu
+  four_corridor_floor_hole:
+    - deepslate_corridor_nsewd
+    - deepslate_corridor_nsewd_2
+  north_end:
+    - deepslate_redstone_padlock
+  two_corridor_ew:
+    - deepslate_two_corridor_ew
+  two_corridor_ne:
+    - deepslate_two_corridor_ne
+  two_corridor_ns:
+    - deepslate_two_corridor_ns
+    - deepslate_two_corridor_ns_2
+  three_corridor_nes:
+    - deepslate_three_corridor_nes
+rules:
+  - "north_end|four_corridor:4:N"
+  - "north_end|three_corridor_nes:2:N"
+  - "staircase_north|four_corridor:3:N"
+  - "staircase_north|staircase_north:4:UD"
+  - "staircase_north|two_corridor_ns:3:N"
+  - "staircase_north|three_corridor_nes:3:N"
+  - "staircase_north|staircase_north_end:2:D"
+  - "four_corridor|four_corridor:1:NSEW"
+  - "four_corridor|four_corridor_roof_hole:0.5:NSEW"
+  - "four_corridor|four_corridor_floor_hole:0.5:NSEW"
+  - "four_corridor|two_corridor_ns:2:NS"
+  - "four_corridor|two_corridor_ne:2:SW"
+  - "four_corridor|two_corridor_ew:2:EW"
+  - "four_corridor|three_corridor_nes:1:NSW"
+  - "two_corridor_ns|two_corridor_ns:3:NS"
+  - "two_corridor_ns|three_corridor_nes:3:NS"
+  - "two_corridor_ns|two_corridor_ne:3:S"
+  - "two_corridor_ew|two_corridor_ew:3:EW"
+  - "two_corridor_ew|three_corridor_nes:3:W"
+  - "four_corridor_floor_hole|four_corridor_roof_hole:100:D"

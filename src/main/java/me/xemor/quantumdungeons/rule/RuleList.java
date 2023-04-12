@@ -3,23 +3,31 @@ package me.xemor.quantumdungeons.rule;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeightList {
+public class RuleList {
 
-    private final List<Group.Weight> weights;
+    private final List<Group.Rule> rules = new ArrayList<>(2);
 
-    public WeightList(List<Group.Weight> weights) {
-        this.weights = weights;
+    public RuleList() {}
+
+    public List<Group.Rule> getRules(int side) {
+        return getPreferences(side, -1);
     }
 
-    public List<Group.Weight> getRules(int side) {
-        List<Group.Weight> sideWeights = new ArrayList<>();
-        for (Group.Weight weight : weights) {
-            int result = side & weight.side();
-            if (result == side) {
-                sideWeights.add(weight);
+    // Returns all rules on that side with a weight greater than threshold
+    public List<Group.Rule> getPreferences(int side, int threshold) {
+        if (side == Side.ALL) return new ArrayList<>(rules);
+        List<Group.Rule> sideRules = new ArrayList<>();
+        for (Group.Rule rule : rules) {
+            int result = side & rule.getSide();
+            if (result == side && rule.getWeight() > threshold) {
+                sideRules.add(rule);
             }
         }
-        return sideWeights;
+        return sideRules;
+    }
+
+    public void addRule(Group.Rule rule) {
+        this.rules.add(rule);
     }
 
 }
